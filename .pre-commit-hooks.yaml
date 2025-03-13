@@ -1,0 +1,20 @@
+-   id: clang-tidy-diff
+    name: clang-tidy-diff
+    description: 'This hook runs clang-tidy-diff.'
+    entry: clang-tidy-diff-hook -quiet -fix -iregex '.*\.(cpp|cc|c\+\+|cxx|c|cl|h|hpp|m|mm|inc|cuh|cu|tpp)'
+    args: ['-path', 'build']
+    # Deligate the filter to the option -iregex
+    always_run: true
+    pass_filenames: false
+    language: python
+    types_or: [c++, c, cuda, c#, objective-c]
+    minimum_pre_commit_version: '2.9.2'
+-   id: add-headers
+    name: add-headers
+    description: 'Adds headers to build/compile_commands.json'
+    entry: add-headers
+    args: ['-path', 'build']
+    always_run: true
+    pass_filenames: false
+    language: python
+    minimum_pre_commit_version: '2.9.2'
